@@ -89,5 +89,3 @@ class DVDController(metaclass=SingletonMetaclass):
             copies=row['copies'],
             total_quantity=row['total_quantity']
         )
-
-from os import getcwd

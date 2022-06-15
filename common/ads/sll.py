@@ -32,20 +32,20 @@ class SortedLinkedList:
                 cur = cur.next
 
     def __init__(self):
-        self.head = None
-        self.size = 0
+        self._head = None
+        self._size = 0
 
     def __iter__(self):
-        return self._ListIter(self.head)
+        return self._ListIter(self._head)
 
     def __len__(self):
-        return self.size
+        return self._size
 
     def add(self, key, value):
         if self.isempty():
-            self.head = self._ListNode(key, value)
+            self._head = self._ListNode(key, value)
         else:
-            prev = self.head
+            prev = self._head
             for node in self:
                 if node.key > key:
                     new_node = self._ListNode(key, value, node)
@@ -56,14 +56,14 @@ class SortedLinkedList:
             else:
                 prev.next = self._ListNode(key, value)
 
-        self.size += 1
+        self._size += 1
 
     def remove(self, key):
-        prev = self.head
+        prev = self._head
         for node in self:
             if node.key == key:
                 prev.next = node.next
-                self.size -= 1
+                self._size -= 1
                 return node
             else:
                 prev = node
@@ -78,4 +78,4 @@ class SortedLinkedList:
             return None
 
     def isempty(self):
-        return self.size == 0
+        return self._size == 0
