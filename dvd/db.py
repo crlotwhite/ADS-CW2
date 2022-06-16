@@ -7,7 +7,7 @@ from .type import DVD
 class DVDController(metaclass=SingletonMetaclass):
     query_dict = {
         'init': 'CREATE TABLE dvd(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, stars TEXT, producer TEXT, director TEXT, production_company TEXT, copies INTEGER, total_quantity INTEGER)',
-        'create': 'INSERT INTO dvd(name, starts, producer, director, production_company, copies, total_quantity) values (?, ?, ?, ?, ?, ?, ?)',
+        'create': 'INSERT INTO dvd(name, stars, producer, director, production_company, copies, total_quantity) values (?, ?, ?, ?, ?, ?, ?)',
         'update': 'UPDATE dvd SET {} = {} WHERE id = {}',
         'delete': 'DELETE FROM dvd WHERE id = {}',
         'read': 'SELECT * FROM dvd WHERE id = {}',
@@ -29,11 +29,11 @@ class DVDController(metaclass=SingletonMetaclass):
     def __del__(self):
         self.conn.close()
 
-    def add(self, name, starts, producer, director, production_company, total_quantity):
+    def add(self, name, stars, producer, director, production_company, total_quantity):
         copies = total_quantity
         self.cur.execute(
             self.query_dict['create'],
-            (name, starts, producer, director, production_company, copies, total_quantity)
+            (name, stars, producer, director, production_company, copies, total_quantity)
         )
         self.conn.commit()
         return self.cur.lastrowid

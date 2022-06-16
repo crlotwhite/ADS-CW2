@@ -8,8 +8,8 @@ from typing import List
 @dataclass
 class Customer:
     name: str
+    rented_dvd: List[str]
     db_id: int = 0
-    rented_dvd: List[str] = field(default_factory=lambda: [])
 
     def __hash__(self):
         return hash(self.name)

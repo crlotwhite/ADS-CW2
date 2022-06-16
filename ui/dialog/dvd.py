@@ -16,12 +16,13 @@ def admin_dvd_add_menu(context):
 
     container: DVListType = context['dvd']
     if container.add(DVD(
-        name,
-        stars,
-        producer,
-        director,
-        production_company,
-        total_quantity
+        name=name,
+        stars=stars,
+        producer=producer,
+        director=director,
+        production_company=production_company,
+        total_quantity=total_quantity,
+        copies=total_quantity
     )):
         print('Success')
     else:
@@ -130,16 +131,12 @@ def user_dvd_browse_menu(context):
 @box
 def user_dvd_list_menu(context, cache):
     print('User - Browse DVD', end='\n\n')
-    line_count = 10
     current_page = {}
 
     while True:
         # slice page from cache
         for i, dvd in enumerate(cache):
-            if len(current_page) == line_count:
-                break
-            else:
-                current_page.update({f'{i+1}': dvd})
+            current_page.update({f'{i+1}': dvd})
 
         # show current page
         if any(current_page):

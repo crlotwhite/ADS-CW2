@@ -49,7 +49,10 @@ class SortedLinkedList:
             for node in self:
                 if node.key > key:
                     new_node = self._ListNode(key, value, node)
-                    prev.next = new_node
+                    if node.key == self._head.key:
+                        self._head = new_node
+                    else:
+                        prev.next = new_node
                     break
                 else:
                     prev = node

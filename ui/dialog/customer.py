@@ -9,7 +9,7 @@ def admin_customer_add_menu(context):
     print('Enter the name of the customer you want to add.')
     name = input('- Name: ')
     container: CustomerBTreeType = context['customer']
-    if container.add(Customer(name=name)):
+    if container.add(Customer(name=name, rented_dvd=[])):
         print('Success')
     else:
         print('Failed..')

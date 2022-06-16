@@ -10,7 +10,8 @@ class DVListType(metaclass=SingletonMetaclass):
         self.__db = DVDController()
 
         print('loading dvd data from db...')
-        for dvd in self.__db.fetch_all():
+        dvds = self.__db.fetch_all()
+        for dvd in dvds:
             sll = self.mux(dvd.name)
             sll.add(dvd.name, dvd)
         else:
